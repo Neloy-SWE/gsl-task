@@ -21,4 +21,6 @@ class AppColor {
   static const Color colorTextCheckbox = Color.fromRGBO(92, 93, 118, 1);
   static const Color colorCardBackground = Color.fromRGBO(249, 250, 251, 1);
   static const Color colorBorder = Color.fromRGBO(216, 224, 237, 1);
+  static const Color colorBottomNavBarItemBackground = Color.fromRGBO(230, 246, 252, 1);
+  static const Color colorActiveLow = Color.fromRGBO(12, 170, 27, 1);
 }

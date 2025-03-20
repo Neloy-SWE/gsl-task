@@ -3,7 +3,7 @@
 * Email: taufiqneloy.swe@gmail.com
 */
 
-class AppFont{
+class AppFont {
   static const String font500 = "font500";
   static const String font600 = "font600";
 }

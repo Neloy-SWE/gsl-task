@@ -24,9 +24,7 @@ class AppTheme {
         fontSize: 22,
       ),
     ),
-    iconTheme: IconThemeData(
-      color: AppColor.colorTextTitle,
-    ),
+    iconTheme: IconThemeData(color: AppColor.colorTextTitle),
 
     textTheme: TextTheme(
       titleLarge: TextStyle(
@@ -44,12 +42,31 @@ class AppTheme {
         fontSize: 14,
         color: AppColor.colorTextNormal,
       ),
-
       bodyMedium: TextStyle(
         fontFamily: AppFont.font600,
         fontSize: 12,
         color: AppColor.colorTextNormal,
       ),
+    ),
+
+    navigationBarTheme: NavigationBarThemeData(
+      indicatorColor: AppColor.colorBottomNavBarItemBackground,
+      backgroundColor: Colors.white,
+      elevation: 5,
+      labelTextStyle: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
+          return TextStyle(
+            fontFamily: AppFont.font600,
+            fontSize: 11,
+            color: AppColor.colorTextTitle,
+          );
+        }
+        return TextStyle(
+          fontFamily: AppFont.font500,
+          fontSize: 11,
+          color: AppColor.colorTextTitle,
+        );
+      }),
     ),
   );
 }
