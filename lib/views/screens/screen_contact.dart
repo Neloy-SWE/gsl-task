@@ -4,21 +4,32 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gsl_task/managers/contact/manager_contact.dart';
+import 'package:gsl_task/networks/model/model_contact.dart';
 import 'package:gsl_task/utilities/app_color.dart';
-import 'package:gsl_task/utilities/app_image.dart';
+import 'package:gsl_task/utilities/app_constant.dart';
 import 'package:gsl_task/utilities/app_size.dart';
 import 'package:gsl_task/utilities/app_text.dart';
 import 'package:gsl_task/views/custom_widgets/custom_text_field.dart';
 
-class ContactScreen extends StatefulWidget {
+class ContactScreen extends ConsumerStatefulWidget {
   const ContactScreen({super.key});
 
   @override
-  State<ContactScreen> createState() => _ContactScreenState();
+  ConsumerState<ContactScreen> createState() => _ContactScreenState();
 }
 
-class _ContactScreenState extends State<ContactScreen> {
+class _ContactScreenState extends ConsumerState<ContactScreen> {
   TextEditingController searchTagController = TextEditingController();
+  List<ContactModel> contacts = [];
+  String dataStatus = "";
+
+  @override
+  void initState() {
+    ref.read(saveContactPreference.notifier).buildList();
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -28,43 +39,55 @@ class _ContactScreenState extends State<ContactScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: AppSize.paddingAll20,
-      children: [
-        CustomTextField.search(
-          context: context,
-          hint: AppText.searchContacts,
-          controller: searchTagController,
-          textInputType: TextInputType.text,
-          textInputAction: TextInputAction.search,
-          prefix: Icons.search,
-        ),
-        AppSize.gapH20,
+    contacts = ref.watch(saveContactPreference).contacts;
 
-        // contact
-        Text(
-          "124 ${AppText.contacts}",
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
-        AppSize.gapH20,
+    return ref.watch(saveContactPreference).buildStatus == AppConstant.loading
+        ? Center(child: CircularProgressIndicator(color: Colors.black))
+        : ref.watch(saveContactPreference).buildStatus == AppConstant.success
+        ? ListView(
+          padding: AppSize.paddingAll20,
+          children: [
+            CustomTextField.search(
+              context: context,
+              hint: AppText.searchContacts,
+              controller: searchTagController,
+              textInputType: TextInputType.text,
+              textInputAction: TextInputAction.search,
+              prefix: Icons.search,
+            ),
+            AppSize.gapH20,
 
-        // contact list:
-        ListView.separated(
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: 5,
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return _contact();
-          },
-          separatorBuilder: (BuildContext context, int index) {
-            return AppSize.gapH15;
-          },
-        ),
-      ],
-    );
+            // contact
+            Text(
+              "${contacts.length} ${AppText.contacts}",
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            AppSize.gapH20,
+
+            // contact list:
+            ListView.separated(
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: contacts.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return _contact(contact: contacts[index]);
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return AppSize.gapH15;
+              },
+            ),
+          ],
+        )
+        : Center(
+          child: Text(
+            AppText.tryAgainLater,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+        );
   }
 
-  Widget _contact() {
+  Widget _contact({required ContactModel contact}) {
     return Container(
       padding: AppSize.paddingAll10,
       decoration: BoxDecoration(
@@ -101,7 +124,7 @@ class _ContactScreenState extends State<ContactScreen> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                            image: AssetImage(AppImage.profile),
+                            image: AssetImage(contact.imageUrl!),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -112,7 +135,7 @@ class _ContactScreenState extends State<ContactScreen> {
                     // name
                     Flexible(
                       child: Text(
-                        "Michale Kahnwald",
+                        contact.name!,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context).textTheme.titleMedium,
@@ -168,9 +191,9 @@ class _ContactScreenState extends State<ContactScreen> {
           ),
           AppSize.gapH20,
 
-          _details(icon: Icons.mail_outline, details: "abc@mail.com"),
-          _details(icon: Icons.ring_volume_outlined, details: "+12 34 56 678"),
-          _details(icon: Icons.place_outlined, details: "12A Labc, NK"),
+          _details(icon: Icons.mail_outline, details: contact.mail!),
+          _details(icon: Icons.ring_volume_outlined, details: contact.phone!),
+          _details(icon: Icons.place_outlined, details: contact.address!),
         ],
       ),
     );

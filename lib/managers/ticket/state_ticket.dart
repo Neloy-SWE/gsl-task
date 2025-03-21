@@ -13,12 +13,10 @@ class TicketState {
 
   TicketState({required this.buildStatus, required this.tickets});
 
-  // Initial state with loading status
   factory TicketState.initial() {
     return TicketState(buildStatus: AppConstant.loading, tickets: []);
   }
 
-  // CopyWith method to update specific fields
   TicketState copyWith({String? buildStatus, List<TicketModel>? tickets}) {
     return TicketState(
       buildStatus: buildStatus ?? this.buildStatus,

@@ -49,6 +49,7 @@ class _FilterScreenState extends State<FilterScreen> {
   List<String> tags = [];
 
   TextEditingController searchTagController = TextEditingController();
+
   @override
   void dispose() {
     searchTagController.dispose();
@@ -97,8 +98,6 @@ class _FilterScreenState extends State<FilterScreen> {
                       brandsName.add(brands[index].title);
                     }
                   });
-
-                  print(brandsName);
                 },
               ),
             ),
@@ -120,8 +119,6 @@ class _FilterScreenState extends State<FilterScreen> {
               setState(() {
                 priority = value!;
               });
-
-              print(priority);
             },
             dropdownMenuEntries: priorityEntries,
           ),
@@ -137,15 +134,15 @@ class _FilterScreenState extends State<FilterScreen> {
             textInputType: TextInputType.text,
             textInputAction: TextInputAction.search,
             prefix: Icons.search,
-            onFieldSubmitted: (value){
+            onFieldSubmitted: (value) {
               setState(() {
-                if (!tags.contains(value)){
+                if (!tags.contains(value)) {
                   tags.add(value);
                 }
 
                 searchTagController.clear();
               });
-            }
+            },
           ),
           AppSize.gapH10,
 
