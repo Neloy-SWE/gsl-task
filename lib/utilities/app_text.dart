@@ -13,7 +13,12 @@ class AppText {
   static const String gainSolutions = "Gain Solutions";
   static const String myProfile = "My Profile";
   static const String statusNew = "New";
-
+  static const String statusFirstResponseOverdue = "First response overdue";
+  static const String statusOverdue = "Overdue";
+  static const String statusCustomerResponded = "Customer responded";
+  static const String tagLow = "Low";
+  static const String tagUrgent = "Urgent";
+  static const String tagMedium = "Medium";
   static const String id = "#ID ";
   static const String filter = "Filter";
   static const String brand = "Brand";
@@ -34,4 +39,5 @@ class AppText {
   static const String group = "Group";
   static const String manager = "Manager";
   static const String logout = "Log out";
+  static const String tryAgainLater = "Try again later!";
 }

@@ -133,7 +133,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         SizedBox(
-          height: 192,
+          height: 250,
           child: ListView.builder(
             physics: BouncingScrollPhysics(),
             shrinkWrap: true,
