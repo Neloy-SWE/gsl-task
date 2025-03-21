@@ -23,6 +23,8 @@ class ContactScreen extends ConsumerStatefulWidget {
 class _ContactScreenState extends ConsumerState<ContactScreen> {
   TextEditingController searchTagController = TextEditingController();
   List<ContactModel> contacts = [];
+  List<ContactModel> searchContacts = [];
+  bool searchStart = false;
   String dataStatus = "";
 
   @override
@@ -40,6 +42,12 @@ class _ContactScreenState extends ConsumerState<ContactScreen> {
   @override
   Widget build(BuildContext context) {
     contacts = ref.watch(saveContactPreference).contacts;
+    if (!searchStart){
+      print("Hello");
+      searchContacts = ref.watch(saveContactPreference).contacts;
+      searchStart = true;
+    }
+
 
     return ref.watch(saveContactPreference).buildStatus == AppConstant.loading
         ? Center(child: CircularProgressIndicator(color: Colors.black))
@@ -54,12 +62,23 @@ class _ContactScreenState extends ConsumerState<ContactScreen> {
               textInputType: TextInputType.text,
               textInputAction: TextInputAction.search,
               prefix: Icons.search,
+                onChanged: (value) {
+                  final tempContacts = contacts.where((element) {
+                    final contactTextLowerCase = element.name!.toLowerCase();
+                    final search = value.toLowerCase();
+                    return contactTextLowerCase.contains(search);
+                  }).toList();
+                  setState(() {
+                    print(searchContacts);
+                    searchContacts = tempContacts;
+                  });
+                }
             ),
             AppSize.gapH20,
 
             // contact
             Text(
-              "${contacts.length} ${AppText.contacts}",
+              "${searchContacts.length} ${AppText.contacts}",
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             AppSize.gapH20,
@@ -67,10 +86,10 @@ class _ContactScreenState extends ConsumerState<ContactScreen> {
             // contact list:
             ListView.separated(
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: contacts.length,
+              itemCount: searchContacts.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                return _contact(contact: contacts[index]);
+                return _contact(contact: searchContacts[index]);
               },
               separatorBuilder: (BuildContext context, int index) {
                 return AppSize.gapH15;
