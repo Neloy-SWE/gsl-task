@@ -23,4 +23,5 @@ class AppColor {
   static const Color colorBorder = Color.fromRGBO(216, 224, 237, 1);
   static const Color colorBottomNavBarItemBackground = Color.fromRGBO(230, 246, 252, 1);
   static const Color colorActiveLow = Color.fromRGBO(12, 170, 27, 1);
+  static const Color colorSearchFieldBackground = Color.fromRGBO(243, 244, 248, 1);
 }

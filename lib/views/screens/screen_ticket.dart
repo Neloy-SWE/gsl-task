@@ -9,6 +9,7 @@ import 'package:gsl_task/utilities/app_font.dart';
 import 'package:gsl_task/utilities/app_size.dart';
 import 'package:gsl_task/utilities/app_text.dart';
 import 'package:gsl_task/views/custom_widgets/cutom_tag_container.dart';
+import 'package:gsl_task/views/screens/screen_filter.dart';
 
 class TicketScreen extends StatefulWidget {
   const TicketScreen({super.key});
@@ -33,11 +34,15 @@ class _TicketScreenState extends State<TicketScreen> {
             ),
 
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (builder) => FilterScreen()));
+              },
               icon: Icon(
                 Icons.filter_alt_outlined,
                 color: AppColor.colorTextTitle,
-                size: 20,
+                size: 30,
               ),
             ),
           ],
@@ -51,9 +56,10 @@ class _TicketScreenState extends State<TicketScreen> {
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return _ticket();
-          }, separatorBuilder: (BuildContext context, int index) {
+          },
+          separatorBuilder: (BuildContext context, int index) {
             return AppSize.gapH15;
-        },
+          },
         ),
       ],
     );
@@ -131,23 +137,20 @@ class _TicketScreenState extends State<TicketScreen> {
           ),
           Divider(height: 20),
 
+          // tags
           Wrap(
             spacing: 10,
             runSpacing: 10,
             children: List.generate(10, (index) {
-              return _tag();
+              return CustomTagContainer.primary(
+                context: context,
+                status: "Low",
+                active: true,
+              );
             }),
           ),
         ],
       ),
-    );
-  }
-
-  Widget _tag() {
-    return CustomTagContainer.primary(
-      context: context,
-      status: "Low",
-      active: true,
     );
   }
 }

@@ -13,9 +13,11 @@ class AppSize {
   static const SizedBox gapH05 = SizedBox(height: 05);
   static const SizedBox gapH10 = SizedBox(height: 10);
   static const SizedBox gapH15 = SizedBox(height: 15);
+  static const SizedBox gapH20 = SizedBox(height: 20);
   static const SizedBox gapH25 = SizedBox(height: 35);
 
   // width:
+  static const SizedBox gapW05 = SizedBox(width: 05);
   static const SizedBox gapW10 = SizedBox(width: 10);
   static const SizedBox gapW15 = SizedBox(width: 15);
   static const SizedBox gapW20 = SizedBox(width: 20);

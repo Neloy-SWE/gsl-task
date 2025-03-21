@@ -14,4 +14,10 @@ class AppText {
   static const String statusNew = "New";
 
   static const String id = "#ID ";
+  static const String filter = "Filter";
+  static const String brand = "Brand";
+  static const String priority = "Priority";
+  static const String selectPriority = "Select priority";
+  static const String tags = "Tags";
+  static const String searchTags = "Search tags";
 }
