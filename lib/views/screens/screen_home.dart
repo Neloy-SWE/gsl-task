@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:gsl_task/utilities/app_color.dart';
 import 'package:gsl_task/utilities/app_text.dart';
 import 'package:gsl_task/views/custom_widgets/custom_appbar.dart';
-import 'package:gsl_task/views/screens/screen_filter.dart';
+import 'package:gsl_task/views/screens/screen_contact.dart';
 import 'package:gsl_task/views/screens/screen_ticket.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,7 +20,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentPageIndex = 0;
 
-  final List<Widget> _pages = [TicketScreen()];
+  final List<Widget> _pages = [TicketScreen(), ContactScreen()];
 
   PreferredSizeWidget _getAppBar() {
     switch (currentPageIndex) {

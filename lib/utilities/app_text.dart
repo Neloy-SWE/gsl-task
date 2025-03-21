@@ -20,4 +20,8 @@ class AppText {
   static const String selectPriority = "Select priority";
   static const String tags = "Tags";
   static const String searchTags = "Search tags";
+  static const String searchContacts = "Search contacts";
+  static const String edit = "Edit";
+  static const String delete = "Delete";
+  static const String viewTickets = "View tickets";
 }

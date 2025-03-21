@@ -16,6 +16,7 @@ class CustomTextField{
     required TextInputType textInputType,
     required TextInputAction textInputAction,
     void Function(String)? onFieldSubmitted,
+    void Function(String)? onChanged,
     IconData? prefix,
     void Function()? prefixOnTap,
 }){
@@ -27,6 +28,7 @@ class CustomTextField{
       cursorColor: Colors.black38,
       textInputAction: textInputAction,
       onFieldSubmitted: onFieldSubmitted,
+      onChanged: onChanged,
       decoration: InputDecoration(
         filled: true,
         fillColor: AppColor.colorSearchFieldBackground,

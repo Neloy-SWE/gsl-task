@@ -46,6 +46,7 @@ class _FilterScreenState extends State<FilterScreen> {
       );
 
   String priority = "";
+  List<String> tags = [];
 
   TextEditingController searchTagController = TextEditingController();
   @override
@@ -135,18 +136,27 @@ class _FilterScreenState extends State<FilterScreen> {
             controller: searchTagController,
             textInputType: TextInputType.text,
             textInputAction: TextInputAction.search,
-            prefix: Icons.search
+            prefix: Icons.search,
+            onFieldSubmitted: (value){
+              setState(() {
+                if (!tags.contains(value)){
+                  tags.add(value);
+                }
+
+                searchTagController.clear();
+              });
+            }
           ),
           AppSize.gapH10,
 
-          // tag suggestions:
+          // searched tags:
           Wrap(
             spacing: 10,
             runSpacing: 10,
-            children: List.generate(10, (index) {
+            children: List.generate(tags.length, (index) {
               return CustomTagContainer.primary(
                 context: context,
-                status: "Low",
+                status: tags[index],
                 active: false,
               );
             }),
