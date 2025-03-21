@@ -1,0 +1,28 @@
+{
+  "profileTitle": "Jonaus Kahnwald",
+  "position": "Support",
+  "firstName": "Jonaus",
+  "lastName": "Kahnwald",
+  "email": "username@email.com",
+  "imageURL": "assets/images/profile.png",
+  "assignedRole": [
+    {
+      "role": "Manager",
+      "group": "Codeeyaneon support",
+      "roleImageURL": "assets/images/profile.png",
+      "managerName": "Jonaus Kahnwald"
+    },
+    {
+      "role": "Agent",
+      "group": "Laravel support",
+      "roleImageURL": "assets/images/profile.png",
+      "managerName": "Hannah Kjanwald"
+    },
+    {
+      "role": "Agent",
+      "group": "Upwork",
+      "roleImageURL": "assets/images/profile.png",
+      "managerName": "Jana Neilsen"
+    }
+  ]
+}
