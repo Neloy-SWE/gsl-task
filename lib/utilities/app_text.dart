@@ -11,6 +11,7 @@ class AppText {
   static const String contacts = "Contacts";
   static const String profile = "Profile";
   static const String gainSolutions = "Gain Solutions";
+  static const String myProfile = "My Profile";
   static const String statusNew = "New";
 
   static const String id = "#ID ";
@@ -24,4 +25,13 @@ class AppText {
   static const String edit = "Edit";
   static const String delete = "Delete";
   static const String viewTickets = "View tickets";
+  static const String support = "Support";
+  static const String basicInfo = "Basic info";
+  static const String firstName = "First name";
+  static const String lastName = "Last name";
+  static const String email = "Email";
+  static const String assignedRoles = "Assigned roles ";
+  static const String group = "Group";
+  static const String manager = "Manager";
+  static const String logout = "Log out";
 }

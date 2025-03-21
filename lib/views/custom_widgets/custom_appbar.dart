@@ -61,6 +61,8 @@ class CustomAppbar {
   }
 
   static profile() {
-    return AppBar();
+    return AppBar(
+      title: Text(AppText.myProfile),
+    );
   }
 }

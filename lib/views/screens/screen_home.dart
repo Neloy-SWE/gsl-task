@@ -8,6 +8,7 @@ import 'package:gsl_task/utilities/app_color.dart';
 import 'package:gsl_task/utilities/app_text.dart';
 import 'package:gsl_task/views/custom_widgets/custom_appbar.dart';
 import 'package:gsl_task/views/screens/screen_contact.dart';
+import 'package:gsl_task/views/screens/screen_profile.dart';
 import 'package:gsl_task/views/screens/screen_ticket.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentPageIndex = 0;
 
-  final List<Widget> _pages = [TicketScreen(), ContactScreen()];
+  final List<Widget> _pages = [TicketScreen(), ContactScreen(),ProfileScreen()];
 
   PreferredSizeWidget _getAppBar() {
     switch (currentPageIndex) {
@@ -45,7 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
             currentPageIndex = index;
           });
         },
-
+        elevation: 100,
+        shadowColor: Colors.black,
         selectedIndex: currentPageIndex,
         destinations: [
           NavigationDestination(
