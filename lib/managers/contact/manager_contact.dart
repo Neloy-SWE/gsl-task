@@ -21,9 +21,9 @@ class ContactManager extends StateNotifier<ContactState> {
 
   Future<void> buildList() async {
     try {
-      final List<dynamic> ticketList = json.decode(await ContactData().get());
+      final List<dynamic> contactList = json.decode(await ContactData().get());
       final List<ContactModel> contacts =
-          ticketList.map((json) => ContactModel.fromJson(json)).toList();
+          contactList.map((json) => ContactModel.fromJson(json)).toList();
 
       state = state.copyWith(
         buildStatus: AppConstant.success,
