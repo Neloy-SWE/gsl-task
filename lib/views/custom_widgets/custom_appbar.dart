@@ -43,8 +43,21 @@ class CustomAppbar {
     );
   }
 
-  static filter() {
-    return AppBar();
+  static filter({required BuildContext context}) {
+    return AppBar(
+      leading: IconButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        icon: Icon(Icons.close),
+      ),
+      leadingWidth: 30,
+
+      title: Text(
+        AppText.filter,
+        style: Theme.of(context).textTheme.titleMedium,
+      ),
+    );
   }
 
   static profile() {
