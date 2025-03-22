@@ -127,7 +127,7 @@ in this release, you may not see any active filtration. But if you want to apply
 ## Screenshots:
 
 <p float="left">
-  <img src="screenshots/1. splash.ppg" width="200" />
+  <img src="screenshots/1. splash.png" width="200" />
   <img src="screenshots/2. ticket.png" width="200" />
   <img src="screenshots/3.1. filter.png" width="200" />
   <img src="screenshots/3.2. filter add.png" width="200" />
