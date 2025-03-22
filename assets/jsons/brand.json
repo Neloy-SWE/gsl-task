@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "value": false,
+    "name": "Brand A"
+  },
+  {
+    "id": 2,
+    "value": false,
+    "name": "Brand B"
+  },
+  {
+    "id": 3,
+    "value": false,
+    "name": "Brand C"
+  },
+  {
+    "id": 4,
+    "value": false,
+    "name": "Brand D"
+  }
+]
