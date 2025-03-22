@@ -7,4 +7,6 @@ class AppJsonPath{
   static const String ticketJson = "assets/jsons/ticket.json";
   static const String contactJson = "assets/jsons/contact.json";
   static const String profileJson = "assets/jsons/profile.json";
+  static const String brandJson = "assets/jsons/brand.json";
+  static const String priorityJson = "assets/jsons/priority.json";
 }

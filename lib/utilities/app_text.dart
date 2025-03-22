@@ -40,4 +40,5 @@ class AppText {
   static const String manager = "Manager";
   static const String logout = "Log out";
   static const String tryAgainLater = "Try again later!";
+  static const String apply = "Apply";
 }

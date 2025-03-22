@@ -5,6 +5,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:gsl_task/utilities/app_color.dart';
+import 'package:gsl_task/utilities/app_font.dart';
 import 'package:gsl_task/utilities/app_size.dart';
 import 'package:gsl_task/utilities/app_text.dart';
 
@@ -57,12 +58,21 @@ class CustomAppbar {
         AppText.filter,
         style: Theme.of(context).textTheme.titleMedium,
       ),
+
+      actions: [
+        Text(
+          AppText.apply,
+          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+            color: AppColor.colorTextTicketID,
+            fontFamily: AppFont.font600,
+          ),
+        ),
+        AppSize.gapW15,
+      ],
     );
   }
 
   static profile() {
-    return AppBar(
-      title: Text(AppText.myProfile),
-    );
+    return AppBar(title: Text(AppText.myProfile));
   }
 }

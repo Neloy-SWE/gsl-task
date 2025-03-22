@@ -42,13 +42,9 @@ class _ContactScreenState extends ConsumerState<ContactScreen> {
   @override
   Widget build(BuildContext context) {
     contacts = ref.watch(saveContactPreference).contacts;
-    if (!searchStart){
-      print("Hello");
+    if (!searchStart) {
       searchContacts = ref.watch(saveContactPreference).contacts;
-      searchStart = true;
     }
-
-
     return ref.watch(saveContactPreference).buildStatus == AppConstant.loading
         ? Center(child: CircularProgressIndicator(color: Colors.black))
         : ref.watch(saveContactPreference).buildStatus == AppConstant.success
@@ -62,17 +58,21 @@ class _ContactScreenState extends ConsumerState<ContactScreen> {
               textInputType: TextInputType.text,
               textInputAction: TextInputAction.search,
               prefix: Icons.search,
-                onChanged: (value) {
-                  final tempContacts = contacts.where((element) {
-                    final contactTextLowerCase = element.name!.toLowerCase();
-                    final search = value.toLowerCase();
-                    return contactTextLowerCase.contains(search);
-                  }).toList();
-                  setState(() {
-                    print(searchContacts);
-                    searchContacts = tempContacts;
-                  });
+              onChanged: (value) {
+                if (!searchStart) {
+                  searchStart = true;
                 }
+                final tempContacts =
+                    contacts.where((element) {
+                      final contactTextLowerCase = element.name!.toLowerCase();
+                      final search = value.toLowerCase();
+                      return contactTextLowerCase.contains(search);
+                    }).toList();
+                setState(() {
+                  print(searchContacts);
+                  searchContacts = tempContacts;
+                });
+              },
             ),
             AppSize.gapH20,
 
